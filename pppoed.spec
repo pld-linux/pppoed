@@ -13,6 +13,7 @@ Source0:	http://jamal.davintech.ca/pppoe/%{name}-0.48b1.tgz
 # Source0-md5:	f6b29ecf829f95681e5a11c4b47cfa99
 Source1:	%{name}.initd
 Source2:	%{name}.sysconfig
+Source3:	%{name}-setup.sh
 Patch0:		%{name}-termchar.patch
 #Requires:	ppp
 URL:		http://www.davin.ottawa.on.ca/pppoe/
@@ -43,6 +44,7 @@ cd pppoed
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sbindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
