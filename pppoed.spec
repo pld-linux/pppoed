@@ -51,6 +51,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc QUICK-INSTALL-example pppoed/README* pppoed/INSTALL pppoed/AUTHORS contribs docs/*
 %attr(755,root,root) %{_sbindir}/ppp*
-%{_sysconfdir}/rc.d/init.d/%{name}
+%attr(755,root,root) %{_sysconfdir}/rc.d/init.d/%{name}
 %{_sysconfdir}/sysconfig/%{name}
 %{_mandir}/man8/*
