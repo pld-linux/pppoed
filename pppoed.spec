@@ -14,7 +14,7 @@ Source0:	http://jamal.davintech.ca/pppoe/%{name}-0.48b1.tgz
 Source1:	%{name}.initd
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-termchar.patch
-Requires:	ppp
+#Requires:	ppp
 URL:		http://www.davin.ottawa.on.ca/pppoe/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
