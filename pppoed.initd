@@ -1,0 +1,78 @@
+#!/bin/sh
+#
+# oidentd		This shell script takes care of starting and stopping oidentd.
+#
+# chkconfig:	2345 80 30
+# description:	PPPoE server 
+#	
+# processname:	pppoed
+# config:	
+# pidfile:
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Source oident configureation.
+if [ -f /etc/sysconfig/pppoed ]; then
+	. /etc/sysconfig/pppoed
+else
+	INTERFACE="eth0"
+	RETRIES="-1"	
+fi
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status ]; then
+		msg_network_down pppoed
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Start daemons.
+	if [ ! -f /var/lock/subsys/pppoed ]; then
+		msg_starting pppoed
+		daemon pppoed -I $INTERFACE -R $RETRIES
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/pppoed
+	else
+		msg_already_running pppoed
+	fi
+	;;
+  stop)
+	# Stop daemons.
+	if [ -f /var/lock/subsys/pppoed ]; then
+		msg_stopping pppoed
+		killproc pppoed
+		rm -f /var/lock/subsys/pppoed >/dev/null 2>&1
+	else
+		msg_not_running pppoed
+	fi	
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status oidentd
+	exit $?
+	;;
+#  reload)
+#	msg_reloading pppoed
+#	killproc pppoed -HUP
+#	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL

@@ -1,0 +1,9 @@
+# PPPoEd config file
+#
+# default interface
+INTERFACE="eth0"
+#
+# forces pppoed to be restarted num_retries should the other end be detected 
+# to be dead. Needs lcp_echo. Read the INSTALL file instructions
+RETRIES="-1"
+#
