@@ -1,7 +1,7 @@
 #
 # TODO:
 # - cleanups, description, BR/R,
-# 
+#
 Summary:	PPPoE server package for Linux
 Summary(pl):	Serwer PPPoE dla Linuksa
 Name:		pppoed
@@ -9,7 +9,7 @@ Version:	0.48b1
 Release:	0.1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://jamal.davintech.ca/pppoe/%{name}-0.48b1.tgz
+Source0:	http://jamal.davintech.ca/pppoe/%{name}-%{version}.tgz
 # Source0-md5:	f6b29ecf829f95681e5a11c4b47cfa99
 Source1:	%{name}.initd
 Source2:	%{name}.sysconfig
