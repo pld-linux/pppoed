@@ -25,7 +25,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 cd pppoed
