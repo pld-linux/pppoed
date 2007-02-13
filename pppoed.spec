@@ -3,7 +3,7 @@
 # - cleanups, description, BR/R,
 #
 Summary:	PPPoE server package for Linux
-Summary(pl.UTF-8):   Serwer PPPoE dla Linuksa
+Summary(pl.UTF-8):	Serwer PPPoE dla Linuksa
 Name:		pppoed
 Version:	0.48b1
 Release:	0.1
